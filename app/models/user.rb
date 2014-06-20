@@ -5,7 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   has_many :statuses
-  
+
+  # Validations. email and password validations are provided by 'devise'.
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :profile_name, presence: true,
+                           uniqueness: true,
+                           format: { with: /\A[a-zA-Z\-\_]+\Z/, message: 'must be formatted correctly!' }
+
   # Instance methods
   def full_name
   	if !first_name.nil? 

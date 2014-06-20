@@ -11,10 +11,12 @@
     </div>
   <% end %>
   
-  <%= f.input :user_id, collection: User.all, label_method: :email, 
+  <%= f.input :user_id, collection: User.all.order(:email), label_method: :email, 
                 wrapper_html: { class: "form-group" }, 
                 input_html: { class: "form-control" }%>
-  <%= f.input :context, wrapper_html: { class: "form-group" }, input_html: { class: "form-control" }%>
+  <%= f.input :context, 
+                wrapper_html: { class: "form-group" }, 
+                input_html: { class: "form-control" }%>
   
   <div class="actions">
     <%= f.button :submit %>
