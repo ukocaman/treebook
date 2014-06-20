@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # Added for Devise controller. I added first name, last name and profile name to the model.
-  # To write to those fields in the DB, the code beow is added by Utku
+  # To write those fields to the DB, the code beow is added by Utku
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
