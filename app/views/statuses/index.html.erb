@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-7">
     <h2 class="page-header">All of the Statuses</h2>
 
-    <%= link_to "Post a New Status", new_status_path, class:"btn btn-success" %>
+    
 
     <% @statuses.each do |status| %>
       <div class="status">
@@ -20,9 +20,9 @@
 
     <br>
   </div>
-  <div class="col-md-4">
-    <h2 class="page-header"> Picture </h2>
-    <p> Put a picture here!</p>
+  <div class="col-md-5">
+    <h2 class="page-header">New Status</h2>
+    <%= link_to "Post a New Status", new_status_path, class:"btn btn-success" %>
   </div>  
 </div>
 

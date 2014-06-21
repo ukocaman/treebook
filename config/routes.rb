@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
   devise_for :users
   
-  # Added by Utku to redirect /register, /login, /logout pages. Added shortcuts for path with 'as'.
+  # Added to redirect /register, /login, /logout pages. Added shortcuts for path with 'as'.
   devise_scope :user do
     get "register", to: "devise/registrations#new", as: :register
     get "login", to: "devise/sessions#new", as: :login
     get "logout", to: "devise/sessions#destroy", as: :logout
   end
 
-  resources :statuses
-  get 'feed', to: 'statuses#index', as: :feed
+  # Creates the paths for Status model
+  # changed the path name from 'statuses' to 'updates', changed the updates/new to updates/create
+  resources :statuses, path: 'updates', path_names: { new: "create" } 
+    
+  get 'feed', to: 'statuses#index', as: :feed # redirect 'feed' to statuses
   
-  root to: 'statuses#index'
+  root to: 'statuses#index' # home page
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

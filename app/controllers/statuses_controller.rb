@@ -1,4 +1,9 @@
 class StatusesController < ApplicationController
+  
+  # Added this before filter for devise's user authentication !
+  # User needs to log in before new , create, edit and update actions
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy] 
+  
   before_action :set_status, only: [:show, :edit, :update, :destroy]
 
   # GET /statuses
