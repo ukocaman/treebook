@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
+
   devise_for :users
   
   # Added to redirect /register, /login, /logout pages. Added shortcuts for path with 'as'.
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
     
   get 'feed', to: 'statuses#index', as: :feed # redirect 'feed' to statuses
   
+  get '/:id', to: 'profiles#show' #/profilename will run profiles controller's show action
+
   root to: 'statuses#index' # home page
 
   # The priority is based upon order of creation: first created -> highest priority.
